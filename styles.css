@@ -1,0 +1,63 @@
+body{
+    background-color: rgb(225, 225, 225);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.passwordCheck{
+    color: grey;
+}
+
+.error, .required{
+    color: red;
+}
+
+.validPassword{
+    color: seagreen;
+}
+
+#passwordSpansContainer{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    padding: 10%;
+}
+
+#passwordSpans{
+    min-width: 300px;
+}
+
+#passwordSpans > p{
+    font-size: 1rem;
+}
+
+span.error{
+    min-height: 1.2em;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+input, select{
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+button{
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid grey;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <form action="">
+        <p>
+            <label for="email">
+                <span>email address<span class="required">*</span></span>
+                
+                <input
+                    type="email"
+                    inputmode="email"
+                    id="email"
+                    name="email"
+                    onkeyup="validateEmail()"
+                />
+                <span class = 'error' id="errorEmail" aria-live="polite"></span>
+            </label>
+        </p>
+        <p>
+            <label for="country">
+                <span>country<span class="required">*</span></span>
+                <select name="country" id="country" onchange="validateZip()">
+                    <option value="us">USA</option>
+                    <option value="ch">Switzerland</option>
+                </select>
+                <span class = 'error' id="errorCountry" aria-live="polite"></span>
+            </label>
+        </p>
+        <p>
+            <label for="zip">
+                <span>zip code<span class="required">*</span></span>
+                <input type="text" id="zip" name="zip" onkeyup="validateZip()" />
+                <span class = 'error' id="errorZip" aria-live="polite"></span>
+            </label>
+        </p>
+
+        <p>
+            <label for="password">
+                <span>password<span class="required">*</span></span>
+                <input type="password" id="password" name="password" onkeyup="validatePass()" />
+                <div id="passwordSpansContainer">
+                    <div id="passwordSpans">
+                        <p class="passwordCheck" id="errorPassLC" aria-live="polite">
+                            >lowercase letter
+                        </p>
+                        <p class="passwordCheck" id="errorPassUC" aria-live="polite">
+                            >uppercase letter
+                        </p>
+                        <p class="passwordCheck" id="errorPassNum" aria-live="polite">
+                            >digit
+                        </p>
+                        <p class="passwordCheck" id="errorPassSpecial" aria-live="polite">
+                            >special character: !@#$%^&*()
+                        </p>
+                        <p class="passwordCheck" id="errorPassLength" aria-live="polite">
+                            >8 to 32 characters
+                        </p>    
+                    </div>    
+                </div>
+            </label>
+        </p>
+
+        <p>
+            <label for="passwordConfirm">
+                <span>confirm password<span class="required">*</span></span>
+                <input type="password" id="passwordConfirm" name="passwordConfirm" onkeyup="validatePassConfirm()" />
+                <span class="error" id="passwordConfirmError" aria-live="polite"></span>
+            </label>
+        </p>
+
+        <button onclick="return validateSubmit()">Submit</button>
+        <span class = 'error' id="errorSubmit" aria-live="polite"></span>
+    </form>
+</body>
+</html>
