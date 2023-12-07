@@ -37,11 +37,23 @@ function validateZip(){
 
     if(!constraint.test(zipField.value)){
         zipError.textContent = constraints[country][1];
+        zipField.setCustomValidity("Invalid field.")
         return false;
     }else{
         zipError.textContent = '';
+        zipField.setCustomValidity("");
         return true;
     } 
+}
+
+function togglePasswordValidity(errorName, validityState){
+    if (!validityState){
+        password.setCustomValidity('Invalid field.');
+        errorName.className = 'error';    
+    }else{
+        password.setCustomValidity('');
+        errorName.className = 'validPassword'
+    }
 }
 
 function validatePass(){
@@ -67,40 +79,42 @@ function validatePass(){
     let password = document.getElementById('password');
     let failFlag = false;
 
+
     if(!constraintLC.test(password.value)){
-        errorPassLC.className = 'error';
+        togglePasswordValidity(errorPassLC, false);
         failFlag = true;
     }else{
-        errorPassLC.className = 'validPassword';
+        togglePasswordValidity(errorPassLC, true);
     }
 
     if(!constraintUC.test(password.value)){
-        errorPassUC.className = 'error';
+        togglePasswordValidity(errorPassUC, false);
         failFlag = true;
     }else{
-        errorPassUC.className = 'validPassword';
+        togglePasswordValidity(errorPassUC, true);
     }
 
     if(!constraintNum.test(password.value)){
-        errorPassNum.className = 'error';
+        togglePasswordValidity(errorPassNum, false);
         failFlag = true;
     }else{
-        errorPassNum.className = 'validPassword';
+        togglePasswordValidity(errorPassNum, true);
     }
 
     if(!constraintSpecial.test(password.value)){
-        errorPassSpecial.className = 'error';
+        togglePasswordValidity(errorPassSpecial, false);
         failFlag = true;
     }else{
-        errorPassSpecial.className = 'validPassword';
+        togglePasswordValidity(errorPassSpecial, true);
     }
 
     if(password.value.length < 8 | password.value.length > 32){
-        errorPassLength.className = 'error';
+        togglePasswordValidity(errorPassLength, false);
         failFlag = true;
     }else{
-        errorPassLength.className = 'validPassword';
+        togglePasswordValidity(errorPassLength, true);
     }
+
 
     return !failFlag
 
@@ -113,8 +127,10 @@ function validatePassConfirm(){
     
     if (password.value !== passwordConfirm.value){
         passwordConfirmError.textContent = 'Passwords do not match';
+        passwordConfirm.setCustomValidity('Invalid field.');
     }else{
         passwordConfirmError.textContent = '';
+        passwordConfirm.setCustomValidity('');
     }
     
 }
@@ -128,8 +144,10 @@ function validateSubmit(){
     validatePass();
     validatePassConfirm();
 
-    if (!validateEmail() || !validateZip() || !validatePass()
-        ||!validatePassConfirm()){
+    if (!validateEmail() ||
+        !validateZip() ||
+        !validatePass()||
+        !validatePassConfirm()){
         submitError.textContent = 'Please fix errors.';
         return false;
     }else{
